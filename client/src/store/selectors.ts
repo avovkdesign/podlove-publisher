@@ -10,6 +10,7 @@ import * as contributorsStore from './contributors.store'
 import * as settingsStore from './settings.store'
 import * as podcastStore from './podcast.store'
 import * as auphonicStore from './auphonic.store'
+import * as relatedEpisodesStore from './relatedEpisodes.store'
 
 const root = {
   lifecycle: (state: State) => state.lifecycle,
@@ -22,6 +23,7 @@ const root = {
   contributors: (state: State) => state.contributors,
   auphonic: (state: State) => state.auphonic,
   settings: (state: State) => state.settings,
+  relatedEpisodes: (state: State) => state.relatedEpisodes,
 }
 
 const lifecycle = {
@@ -117,6 +119,11 @@ const settings = {
   ),
 }
 
+const relatedEpisodes = {
+  episodeList: createSelector(root.relatedEpisodes, relatedEpisodesStore.selectors.episodeList),
+  selectEpisode: createSelector(root.relatedEpisodes, relatedEpisodesStore.selectors.selectEpisodes)
+}
+
 export default {
   lifecycle,
   podcast,
@@ -128,4 +135,5 @@ export default {
   contributors,
   settings,
   auphonic,
+  relatedEpisodes,
 }
